@@ -15,6 +15,15 @@ class MyApp extends StatelessWidget {
       title: 'DeliMeals',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Colors.lightBlueAccent,
+        fontFamily: "Raleway",
+        textTheme: ThemeData.light().textTheme.copyWith(
+          titleMedium: TextStyle(
+            fontFamily: "RobotoCondensed",
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+          )  
+        )
       ),
       home: CategoriesScreen(),
     );
