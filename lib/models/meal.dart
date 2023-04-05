@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'package:flutter/foundation.dart';
 
 enum Complexity {
   Simple,
@@ -26,4 +27,8 @@ class Meal{
   final bool isLactosefree;
   final bool isVegan;
   final bool isVegetarian;
+
+  Meal({required this.id, required this.categories, required this.title, required this.imageUrl, required this.ingredients, required this.steps,
+    required this.duration, required this.complexity, required this.affordability, required this.isGlutenfree, required this.isLactosefree, required this.isVegan, required this.isVegetarian
+  });
 }
