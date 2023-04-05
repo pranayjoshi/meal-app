@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
 
+  static const routeName = "/category_meals";
+
   // final String categoryId;
   // final String categoryTitle;
 
