@@ -28,21 +28,22 @@ class MealItem extends StatelessWidget {
         elevation: 4,
         margin: EdgeInsets.all(10),
         child: Column(children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-            child: Image.network(
-              imageUrl,
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          Stack(
+            children: <Widget>[ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+              child: Image.network(
+                imageUrl,
+                height: 250,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
           Positioned(
             bottom: 20,
             right: 10,
             child: Container(
-              width: 220,
+              width: 300,
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
               color: Colors.black54,
               child: Text(
@@ -52,7 +53,8 @@ class MealItem extends StatelessWidget {
                 overflow: TextOverflow.fade,
               ),
             ),
-          )
+          )]
+          ),
         ]),
       ),
     );
