@@ -15,14 +15,32 @@ class MealDetailScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("$mealId"),
+          title: Text("${selectedMeal.title}"),
         ),
         body: Column(
           children: [
             Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
               width: double.infinity,
               height: 300,
-              child: Image.network(selectedMeal.imageUrl, fit: BoxFit.cover,),
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+                child: Text("Ingredients",
+                    style: Theme.of(context).textTheme.titleMedium)),
+            Container(
+              height: 200,
+              width: 300,
+              child: ListView.builder(
+                itemCount: selectedMeal.ingredients.length,
+                itemBuilder: (context, index) => Card(
+                  color: Theme.of(context).accentColor,
+                  child: Text(selectedMeal.ingredients[index]),
+                ),
+              ),
             )
           ],
         ));
