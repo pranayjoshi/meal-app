@@ -29,16 +29,23 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             Container(
-                child: Text("Ingredients",
-                    style: Theme.of(context).textTheme.titleMedium)),
+              child: Text("Ingredients",
+                  style: Theme.of(context).textTheme.titleMedium),
+            ),
             Container(
-              height: 200,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10)),
+              height: 150,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
               width: 300,
               child: ListView.builder(
                 itemCount: selectedMeal.ingredients.length,
                 itemBuilder: (context, index) => Card(
                   color: Theme.of(context).accentColor,
-                  child: Text(selectedMeal.ingredients[index]),
+                  child: Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), child: Text(selectedMeal.ingredients[index])),
                 ),
               ),
             )
