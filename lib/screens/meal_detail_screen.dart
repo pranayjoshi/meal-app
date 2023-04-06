@@ -7,6 +7,13 @@ import 'package:meal_app/widgets/meal_item.dart';
 class MealDetailScreen extends StatelessWidget {
   static const routeName = "/meal-detail";
 
+  Widget buildSectionTitle(BuildContext context, String text){
+    return Container(
+              child: Text(text,
+                  style: Theme.of(context).textTheme.titleMedium),
+            );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context)?.settings.arguments;
@@ -28,10 +35,7 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Container(
-              child: Text("Ingredients",
-                  style: Theme.of(context).textTheme.titleMedium),
-            ),
+            buildSectionTitle(context, "Ingredients"),
             Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -48,7 +52,8 @@ class MealDetailScreen extends StatelessWidget {
                   child: Padding(padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), child: Text(selectedMeal.ingredients[index])),
                 ),
               ),
-            )
+            ),
+            buildSectionTitle(context, "Steps"),
           ],
         ));
   }
