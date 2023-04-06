@@ -7,6 +7,7 @@ class MealDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("MealDetailScreen"),);
+    final mealId = ModalRoute.of(context)?.settings.arguments;
+    return Center(child: Text("This Meal - $mealId!"),);
   }
 }
