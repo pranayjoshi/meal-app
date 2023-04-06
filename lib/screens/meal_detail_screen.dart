@@ -14,6 +14,20 @@ class MealDetailScreen extends StatelessWidget {
             );
   }
 
+  Widget buildContainer(Widget child){
+    return Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10)),
+              height: 150,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              width: 300,
+              child: child
+            );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context)?.settings.arguments;
@@ -36,16 +50,7 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle(context, "Ingredients"),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10)),
-              height: 150,
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(20),
-              width: 300,
-              child: ListView.builder(
+            buildContainer(ListView.builder(
                 itemCount: selectedMeal.ingredients.length,
                 itemBuilder: (context, index) => Card(
                   color: Theme.of(context).accentColor,
