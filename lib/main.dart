@@ -9,9 +9,23 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  Map<String, bool> _filters = {
+    "gluten":false,
+    "lactose":false,
+    "vegan":false,
+    "vegetarian":false,
+  };
+
+  void _setFilters(Map<String, bool> filterData){}
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -32,7 +46,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => TabsScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
-        FiltersScreen.routeName: (ctx) => FiltersScreen()
+        FiltersScreen.routeName: (ctx) => FiltersScreen(_setFilters)
       },
       // 
       onUnknownRoute: (settings) {
