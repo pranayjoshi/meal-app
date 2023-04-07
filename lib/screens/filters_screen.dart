@@ -14,12 +14,10 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-
   bool _glutenFree = false;
   bool _lactoseFree = false;
   bool _vegan = false;
   bool _vegetarian = false;
-
 
   Widget _buildSwitchListTitle(
       String title, String subt, bool currentVal, Function updateVal) {
@@ -34,10 +32,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Filters"),
-        actions: [
-          IconButton(onPressed: widget.saveFilters as void Function()?, icon: Icon(Icons.save)),
-        ],),
+        appBar: AppBar(
+          title: Text("Filters"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  final Map<String, bool> Sfilters = {
+                    "gluten": _glutenFree,
+                    "lactose": _lactoseFree,
+                    "vegan": _vegan,
+                    "vegetarian": _vegetarian,
+                  };
+                  widget.saveFilters(Sfilters);
+                },
+                icon: Icon(Icons.save)),
+          ],
+        ),
         drawer: MainDrawer(),
         body: Column(children: <Widget>[
           Container(
@@ -62,14 +72,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   _lactoseFree = val;
                 });
               }),
-              _buildSwitchListTitle("Vegan",
-                  "Only includes vegan items.", _vegan, (val) {
+              _buildSwitchListTitle(
+                  "Vegan", "Only includes vegan items.", _vegan, (val) {
                 setState(() {
                   _vegan = val;
                 });
               }),
-              _buildSwitchListTitle("Vegetarian",
-                  "Only includes Vegetarian items.", _vegetarian, (val) {
+              _buildSwitchListTitle(
+                  "Vegetarian", "Only includes Vegetarian items.", _vegetarian,
+                  (val) {
                 setState(() {
                   _vegetarian = val;
                 });
