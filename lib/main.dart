@@ -60,7 +60,15 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _favouritedMeals.removeAt(existingIndex);
       });
+    } else {
+      setState(() {
+        _favouritedMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id== MealId));
+      });
     }
+  }
+
+  bool _isMealFavourite(String id){
+    return _favouritedMeals.any((meal) => meal.id == id);
   }
 
   // This widget is the root of your application.
@@ -82,7 +90,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         "/": (context) => TabsScreen(_favouritedMeals),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavourite, _isMealFavourite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_filters, _setFilters)
       },
       // 
