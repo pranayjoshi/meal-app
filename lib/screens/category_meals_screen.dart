@@ -6,7 +6,6 @@ import 'package:meal_app/models/meal.dart';
 import 'package:meal_app/widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
-
   static const routeName = "/category_meals";
 
   final List<Meal> availableMeals;
@@ -18,12 +17,9 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
-
   late String categoryTitle;
   late List<Meal> displayedMeals;
   var _loadedInitData = false;
-
-
 
   @override
   void initState() {
@@ -46,24 +42,32 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.didChangeDependencies();
   }
 
-  void _removeMeal(String mealId){
+  void _removeMeal(String mealId) {
     setState(() {
       displayedMeals.removeWhere((meal) => meal.id == mealId);
     });
   }
+
   // final String categoryId;
   @override
   Widget build(BuildContext context) {
-
-    
-
     return Scaffold(
         appBar: AppBar(
           title: Text(categoryTitle!),
         ),
-        body: ListView.builder(itemBuilder: (context, index){
-          final Meal x = displayedMeals[index];
-          return MealItem(id:x.id, title: x.title, imageUrl: x.imageUrl, duration: x.duration, complexity: x.complexity, affordability: x.affordability, removeItem: _removeMeal,);
-        }, itemCount: displayedMeals.length,));
+        body: ListView.builder(
+          itemBuilder: (context, index) {
+            final Meal x = displayedMeals[index];
+            return MealItem(
+              id: x.id,
+              title: x.title,
+              imageUrl: x.imageUrl,
+              duration: x.duration,
+              complexity: x.complexity,
+              affordability: x.affordability,
+            );
+          },
+          itemCount: displayedMeals.length,
+        ));
   }
 }
